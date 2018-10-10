@@ -26,7 +26,7 @@ fdbserver_LIBS := lib/libfdbclient.a lib/libfdbrpc.a lib/libflow.a $(FDB_TLS_LIB
 fdbserver_STATIC_LIBS := $(TLS_LIBS)
 
 ifeq ($(PLATFORM),linux)
-  fdbserver_LIBS += -ldl -lpthread -lrt
+  fdbserver_LIBS += -ldl -lpthread -lrt -lrocksdb -lz
   fdbserver_LDFLAGS += -static-libstdc++ -static-libgcc
 
   # GPerfTools profiler (uncomment to use)

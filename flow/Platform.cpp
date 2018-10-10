@@ -1851,7 +1851,7 @@ bool acceptFile( FILE_ATTRIBUTE_DATA fileAttributes, std::string name, std::stri
 #ifdef _WIN32
 	return !(fileAttributes & FILE_ATTRIBUTE_DIRECTORY) && StringRef(name).endsWith(extension);
 #elif (defined(__linux__) || defined(__APPLE__))
-	return S_ISREG(fileAttributes) && StringRef(name).endsWith(extension);
+	return (S_ISREG(fileAttributes)||S_ISDIR(fileAttributes)) && StringRef(name).endsWith(extension);
 #else
 	#error Port me!
 #endif

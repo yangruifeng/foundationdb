@@ -88,6 +88,8 @@ std::map<std::string, std::string> configForToken( std::string const& mode ) {
 		storeType = KeyValueStoreType::SSD_BTREE_V2;
 	} else if (mode == "memory") {
 		storeType= KeyValueStoreType::MEMORY;
+	} else if (mode == "rocksdb") {
+		storeType= KeyValueStoreType::ROCKSDB;
 	}
 	// Add any new store types to fdbserver/workloads/ConfigureDatabase, too
 

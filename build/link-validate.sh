@@ -6,7 +6,7 @@ verlte() {
     [  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
 }
 
-ALLOWED_SHARED_LIBS=("libdl.so.2" "libpthread.so.0" "librt.so.1" "libm.so.6" "libc.so.6" "ld-linux-x86-64.so.2" "libfdb_c.so")
+ALLOWED_SHARED_LIBS=("libdl.so.2" "libpthread.so.0" "librt.so.1" "libm.so.6" "libc.so.6" "ld-linux-x86-64.so.2" "libfdb_c.so" "libtcmalloc.so.4" "libz.so.1")
 
 if [ "$#" -ne 2 ]; then	
     echo "USAGE: link-validate.sh BINNAME GLIBC_VERSION"

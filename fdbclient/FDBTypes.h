@@ -475,6 +475,7 @@ struct KeyValueStoreType {
 		SSD_BTREE_V1,
 		MEMORY,
 		SSD_BTREE_V2,
+		ROCKSDB,
 		END
 	};
 
@@ -493,6 +494,7 @@ struct KeyValueStoreType {
 			case SSD_BTREE_V1: return "ssd-1";
 			case SSD_BTREE_V2: return "ssd-2";
 			case MEMORY: return "memory";
+			case ROCKSDB: return "rocksdb";
 			default: return "unknown";
 		}
 	}

@@ -246,6 +246,8 @@ StatusObject DatabaseConfiguration::toJSON(bool noPolicies) const {
 			result["storage_engine"] = "ssd-2";
 		} else if( tLogDataStoreType == KeyValueStoreType::MEMORY && storageServerStoreType == KeyValueStoreType::MEMORY ) {
 			result["storage_engine"] = "memory";
+		} else if( tLogDataStoreType == KeyValueStoreType::ROCKSDB && storageServerStoreType == KeyValueStoreType::ROCKSDB ) {
+			result["storage_engine"] = "rocksdb";
 		}
 
 		if( remoteTLogReplicationFactor == 1 ) {

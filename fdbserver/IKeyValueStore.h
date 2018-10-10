@@ -77,6 +77,7 @@ protected:
 };
 
 extern IKeyValueStore* keyValueStoreSQLite( std::string const& filename, UID logID, KeyValueStoreType storeType, bool checkChecksums=false, bool checkIntegrity=false );
+extern IKeyValueStore* keyValueStoreRocksDB( std::string const& filename, UID logID, KeyValueStoreType storeType, std::string const & options_str = "" );
 extern IKeyValueStore* keyValueStoreMemory( std::string const& basename, UID logID, int64_t memoryLimit );
 extern IKeyValueStore* keyValueStoreLogSystem( class IDiskQueue* queue, UID logID, int64_t memoryLimit, bool disableSnapshot, bool replaceContent, bool exactRecovery );
 
@@ -88,6 +89,8 @@ inline IKeyValueStore* openKVStore( KeyValueStoreType storeType, std::string con
 		return keyValueStoreSQLite(filename, logID, KeyValueStoreType::SSD_BTREE_V2, checkChecksums, checkIntegrity);
 	case KeyValueStoreType::MEMORY:
 		return keyValueStoreMemory( filename, logID, memoryLimit );
+	case KeyValueStoreType::ROCKSDB:
+		return keyValueStoreRocksDB( filename, logID,  KeyValueStoreType::ROCKSDB );
 	default:
 		UNREACHABLE();
 	}
